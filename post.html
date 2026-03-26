@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文章 | 夏屿手札</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github-dark.min.css"
+    />
+  </head>
+  <body>
+    <div id="bg-layer" aria-hidden="true">
+      <video id="bg-video" autoplay muted loop playsinline preload="metadata"></video>
+      <div id="bg-image"></div>
+      <div class="bg-overlay"></div>
+      <div class="noise-overlay"></div>
+    </div>
+
+    <canvas id="fx-canvas" aria-hidden="true"></canvas>
+    <div id="custom-cursor" aria-hidden="true"></div>
+
+    <header class="top-nav glass">
+      <div class="brand">夏屿手札</div>
+      <nav>
+        <a href="index.html">返回首页</a>
+      </nav>
+      <button id="open-settings" class="ghost-btn">自定义背景</button>
+    </header>
+
+    <main class="post-layout" id="parallax-content">
+      <article class="post-main glass">
+        <header>
+          <h1 id="post-title">加载中...</h1>
+          <p id="post-meta" class="post-meta"></p>
+          <div id="post-tags" class="tag-cloud"></div>
+        </header>
+        <section id="post-content" class="markdown-body"></section>
+        <footer class="post-footer">
+          <span id="post-views"></span>
+          <button id="like-btn" class="audio-btn">点赞</button>
+          <span id="post-likes"></span>
+        </footer>
+      </article>
+
+      <aside class="sidebar glass">
+        <section>
+          <h3>留言板</h3>
+          <form id="comment-form" class="comment-form">
+            <input id="comment-name" type="text" maxlength="20" placeholder="昵称" required />
+            <textarea id="comment-content" rows="4" maxlength="300" placeholder="留下你的想法..." required></textarea>
+            <button type="submit" class="audio-btn">发布留言</button>
+          </form>
+          <ul id="comment-list" class="comment-list"></ul>
+        </section>
+      </aside>
+    </main>
+
+    <section id="settings-panel" class="settings-panel glass" aria-hidden="true">
+      <div class="settings-header">
+        <h2>沉浸设置</h2>
+        <button id="close-settings" class="ghost-btn">关闭</button>
+      </div>
+      <div class="setting-group">
+        <h4>预设背景</h4>
+        <div id="preset-grid" class="preset-grid"></div>
+      </div>
+      <div class="setting-group">
+        <h4>上传自定义背景</h4>
+        <input id="upload-bg" type="file" accept="image/*,video/*" />
+      </div>
+      <div class="setting-group">
+        <h4>鼠标风格</h4>
+        <label>
+          蝴蝶尺寸
+          <input id="cursor-size" type="range" min="24" max="72" value="40" />
+        </label>
+        <label>
+          尾迹强度
+          <input id="trail-density" type="range" min="4" max="20" value="10" />
+        </label>
+        <label>
+          尾迹颜色
+          <input id="trail-color" type="color" value="#7dd8ff" />
+        </label>
+        <label>
+          点击波纹颜色
+          <input id="click-color" type="color" value="#9ad9ff" />
+        </label>
+      </div>
+    </section>
+
+    <section class="audio-dock glass" aria-label="音频控制">
+      <div class="audio-row">
+        <button id="toggle-music" class="audio-btn">播放音乐</button>
+        <input id="music-volume" type="range" min="0" max="1" step="0.01" value="0.35" />
+      </div>
+      <div class="audio-row">
+        <button id="toggle-ambient" class="audio-btn">播放环境音</button>
+        <input id="ambient-volume" type="range" min="0" max="1" step="0.01" value="0.45" />
+      </div>
+      <p id="audio-tip" class="hint">首次交互后可播放音频。可替换 assets/audio 下文件自定义音色。</p>
+    </section>
+
+    <audio id="music-audio" loop preload="none" src="assets/audio/bgm.mp3"></audio>
+    <audio id="ambient-audio" loop preload="none" src="assets/audio/ambient.mp3"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+    <script src="scripts/core.js"></script>
+    <script src="scripts/post.js"></script>
+  </body>
+</html>
